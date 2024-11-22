@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #111216;
+}
+
+.vertical-divider {
+    background-color: grey;
+    width: 2px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+#main {
+    display: flex;
+    height: 100%;
+    font-family: 'DejaVu, serif';
+    color: white;
+}
+
+#settings {
+    width: fit-content;
+}
+
+#image {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
