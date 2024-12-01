@@ -8,7 +8,7 @@ description = "Heighmap generator based on noise functions"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-
+bon = "3.0.2"
 dioxus = { version = "0.5", features = ["web", "router"] }
 dioxus-logger = "0.5.1"
 enum_dispatch = "0.3.13"

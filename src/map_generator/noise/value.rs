@@ -8,8 +8,8 @@ use rand::{
 
 pub struct Value {
     permutation: [u8; 256],
-    values: [f32; 256],
-    interpolation: fn(f32, f32, f32) -> f32,
+    values: [f64; 256],
+    interpolation: fn(f64, f64, f64) -> f64,
 }
 
 impl Value {
@@ -39,7 +39,7 @@ impl Value {
 }
 
 impl Noise for Value {
-    fn noise(&self, x: f32, y: f32) -> f32 {
+    fn noise(&self, x: f64, y: f64) -> f64 {
         let xint = x as usize;
         let yint = y as usize;
 

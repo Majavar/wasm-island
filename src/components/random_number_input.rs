@@ -3,8 +3,8 @@ use rand::{thread_rng, Rng};
 
 #[derive(PartialEq, Debug, Clone, Props)]
 pub struct Props {
-    value: Option<u32>,
-    onchange: EventHandler<u32>,
+    value: Option<i64>,
+    onchange: EventHandler<i64>,
 }
 
 #[component]
@@ -14,10 +14,10 @@ pub fn element(props: Props) -> Element {
     rsx! {
         input {
             r#type: "number",
-            value: "{value}",
+            value: value,
             style: "width: 10em;",
             oninput: move |input| {
-                if let Ok(s) = input.value().parse::<u32>() {
+                if let Ok(s) = input.value().parse::<i64>() {
                     value.set(s);
                     props.onchange.call(s);
                 } else {

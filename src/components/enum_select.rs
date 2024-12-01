@@ -5,6 +5,7 @@ use strum::IntoEnumIterator;
 #[derive(PartialEq, Debug, Clone, Props)]
 pub struct Props<T: 'static + IntoEnumIterator + Default + PartialEq + Eq + Clone> {
     value: Option<T>,
+    disabled: Option<bool>,
     onchange: EventHandler<T>,
 }
 
@@ -19,6 +20,7 @@ pub fn element<
     rsx! {
         select {
             class: "full-width",
+            disabled: props.disabled,
             onchange: move |event| {
                 if let Ok(index) = event.value().parse() {
                     if let Some(variant) = T::iter().nth(index) {
@@ -35,7 +37,7 @@ pub fn element<
             },
             {
                 T::iter().enumerate().map(|(i, e)| rsx! {
-                    option { value: "{i}", selected: e == *value.read(), "{e}" }
+                    option { value: i as i64, selected: e == *value.read(), {e.to_string()} }
                 })
             }
         }
