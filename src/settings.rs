@@ -16,6 +16,8 @@ pub struct Props {
     octave: Option<i64>,
     persistence: Option<f64>,
     lacunarity: Option<f64>,
+    flatten: Option<bool>,
+    use_shading: Option<bool>,
     oninterpolationchange: EventHandler<Interpolation>,
     onseedchange: EventHandler<i64>,
     onnoisechange: EventHandler<NoiseKind>,
@@ -25,6 +27,8 @@ pub struct Props {
     onoctavechange: EventHandler<i64>,
     onpersistencechange: EventHandler<f64>,
     onlacunaritychange: EventHandler<f64>,
+    onflattenchange: EventHandler<bool>,
+    onuseshadingchange: EventHandler<bool>,
 }
 
 #[component]
@@ -101,6 +105,32 @@ pub fn element(props: Props) -> Element {
                                 td {"Lacunarity"}
                                 td {":"}
                                 td { Slidebar { min: 1.0, max: 4.0, step: 0.1, value: props.lacunarity, disabled: *heightmap_type.read() != HeightmapKind::Fractal, onchange: move|lacunarity| props.onlacunaritychange.call(lacunarity)}}
+                            }
+                            tr {
+                                td {"Flatten"}
+                                td {":"}
+                                td { input {
+                                    r#type: "checkbox",
+                                    checked: props.flatten,
+                                    onchange: move|e| props.onflattenchange.call(e.value().parse::<bool>().unwrap_or_default())
+                                }}
+                            }
+                            {
+                                if props.generator_type == GeneratorType::ColoredMap {
+                                    rsx! {
+                                        tr {
+                                            td {"Use shading"}
+                                            td {":"}
+                                            td { input {
+                                                r#type: "checkbox",
+                                                checked: props.use_shading,
+                                                onchange: move|e| props.onuseshadingchange.call(e.value().parse::<bool>().unwrap_or_default())
+                                            }}
+                                        }
+                                    }
+                                } else {
+                                    rsx! {}
+                                }
                             }
                         }
                     } else {

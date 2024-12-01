@@ -34,6 +34,11 @@ fn App() -> Element {
             .lacunarity(DEFAULT_LACUNARITY)
             .persistence(DEFAULT_PERSISTENCE)
             .color_ramp(ColorRamp::from(DEFAULT_COLOR_RAMP.to_vec()))
+            .light_color(DEFAULT_LIGHT)
+            .dark_color(DEFAULT_DARK)
+            .light_position(DEFAULT_LIGHT_POSITION)
+            .flatten(DEFAULT_FLATTEN)
+            .use_shading(DEFAULT_USE_SHADING)
             .build()
     });
 
@@ -84,6 +89,8 @@ fn App() -> Element {
             onoctavechange: move |octave| generator.write().set_octave(octave as u64),
             onpersistencechange: move |persistence| generator.write().set_persistence(persistence),
             onlacunaritychange: move |lacunarity| generator.write().set_lacunarity(lacunarity),
+            onflattenchange: move |flatten| generator.write().set_flatten(flatten),
+            onuseshadingchange: move |use_shading| generator.write().set_use_shading(use_shading),
             generator_type: *generator_type.read(),
             seed: DEFAULT_SEED as i64,
             interpolation: DEFAULT_INTERPOLATION,
@@ -94,6 +101,8 @@ fn App() -> Element {
             octave: DEFAULT_OCTAVE as i64,
             persistence: DEFAULT_PERSISTENCE,
             lacunarity: DEFAULT_LACUNARITY,
+            flatten: DEFAULT_FLATTEN,
+            use_shading: DEFAULT_USE_SHADING,
         }
         div { class: "vertical-divider" }
         div {

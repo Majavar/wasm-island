@@ -1,8 +1,8 @@
 use crate::map_generator::{
-    Color, ColorRampStep, GeneratorType, HeightmapKind, Interpolation, NoiseKind,
+    Color, ColorRampStep, GeneratorType, HeightmapKind, Interpolation, NoiseKind, Vec3,
 };
 
-pub const DEFAULT_GENERATOR_TYPE: GeneratorType = GeneratorType::Heightmap;
+pub const DEFAULT_GENERATOR_TYPE: GeneratorType = GeneratorType::ColoredMap;
 pub const DEFAULT_SEED: u64 = 5;
 pub const DEFAULT_INTERPOLATION: Interpolation = Interpolation::Cubic;
 pub const DEFAULT_HEIGHTMAP: HeightmapKind = HeightmapKind::Fractal;
@@ -50,3 +50,8 @@ pub const DEFAULT_COLOR_RAMP: [ColorRampStep; 9] = [
         position: 1.0,
     }, // white: snow
 ];
+pub const DEFAULT_FLATTEN: bool = true;
+pub const DEFAULT_USE_SHADING: bool = true;
+pub const DEFAULT_LIGHT: Color = Color([255, 255, 204, 255]);
+pub const DEFAULT_DARK: Color = Color([51, 17, 51, 255]);
+pub const DEFAULT_LIGHT_POSITION: Vec3 = Vec3([-1.0, -1.0, 0.0]);

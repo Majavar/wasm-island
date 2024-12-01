@@ -29,7 +29,7 @@ impl Deref for Color {
     }
 }
 
-fn lerp(a: Color, b: Color, t: f64) -> Color {
+pub fn lerp(a: Color, b: Color, t: f64) -> Color {
     if t <= 0.0 {
         a
     } else if t >= 1.0 {
