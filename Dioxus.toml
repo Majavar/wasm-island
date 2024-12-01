@@ -18,6 +18,8 @@ asset_dir = "assets"
 # HTML title tag content
 title = "wasm-island"
 
+base_path = "wasm-island"
+
 [web.watcher]
 
 # when watcher trigger, regenerate the `index.html`
